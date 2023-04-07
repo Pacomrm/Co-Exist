@@ -56,4 +56,3 @@ Easy access getting ready for production
 '@store' : path.resolve(__dirname, '../../../src/store'),
 '@utils' : path.resolve(__dirname, '../../../src/utils'),
 '@views' : path.resolve(__dirname, '../../../src/views'),
->>>>>>> 8de78194b2a888678986b3cd5383a9503e598b0d
