@@ -34,7 +34,7 @@ My intention with this project is to update myself in the latest trends in front
 ### Configuration
 Folder structure:
 
--Client
+#### Client
 --src
 ---assets
 ---components
@@ -45,7 +45,11 @@ Folder structure:
 ---utils
 ---views
 
--Server
+####Server
+- 
+
+####Json Server
+json-server --watch data.json
 
 #### Alias
 Easy access getting ready for production
