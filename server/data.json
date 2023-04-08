@@ -1,11 +1,11 @@
 {
   "projects": [
-    { "id": 0, "name": "cccjson-server", "description": "testing", "founders": ["julio","carmen","pedro"],"ods": ["rights","envrioment"],"objectives": ["1","2"], "location": "here", "needs": ["this","that"] },
-    { "id": 1, "name": "55json-server", "description": "testing", "founders": ["julio","carmen","pedro"],"ods": ["rights","envrioment"],"objectives": ["1","2"], "location": "here", "needs": ["this","that"] },
-    { "id": 2, "name": "11json-server", "description": "testing", "founders": ["julio","carmen","pedro"],"ods": ["rights","envrioment"],"objectives": ["1","2"], "location": "here", "needs": ["this","that"] },
-    { "id": 3, "name": "22json-server", "description": "testing", "founders": ["julio","carmen","pedro"],"ods": ["rights","envrioment"],"objectives": ["1","2"], "location": "here", "needs": ["this","that"] },
-    { "id": 4, "name": "33json-server", "description": "testing", "founders": ["julio","carmen","pedro"],"ods": ["rights","envrioment"],"objectives": ["1","2"], "location": "here", "needs": ["this","that"] },
-    { "id": 5, "name": "44json-server", "description": "testing", "founders": ["julio","carmen","pedro"],"ods": ["rights","envrioment"],"objectives": ["1","2"], "location": "here", "needs": ["this","that"] }
+    { "id": 0, "name": "cccjson-server", "description": "testing", "founders": ["julio","carmen","pedro"],"ods": ["Plants","Agriculture"],"objectives": ["1","2"], "location": "here", "needs": ["this","that"] },
+    { "id": 1, "name": "55json-server", "description": "testing", "founders": ["julio","carmen","pedro"],"ods": ["Rights","envrioment"],"objectives": ["1","2"], "location": "here", "needs": ["this","that"] },
+    { "id": 2, "name": "11json-server", "description": "testing", "founders": ["julio","carmen","pedro"],"ods": ["Rights","Humans"],"objectives": ["1","2"], "location": "here", "needs": ["this","that"] },
+    { "id": 3, "name": "22json-server", "description": "testing", "founders": ["julio","carmen","pedro"],"ods": ["Humans","envrioment"],"objectives": ["1","2"], "location": "here", "needs": ["this","that"] },
+    { "id": 4, "name": "33json-server", "description": "testing", "founders": ["julio","carmen","pedro"],"ods": ["Rights","envrioment"],"objectives": ["1","2"], "location": "here", "needs": ["this","that"] },
+    { "id": 5, "name": "44json-server", "description": "testing", "founders": ["julio","carmen","pedro"],"ods": ["Humans","Plants"],"objectives": ["1","2"], "location": "here", "needs": ["this","that"] }
   ],
-  "ods": ["Agriculture", "Humans","Animals", "Plants"]
+  "ods": ["Agriculture", "Humans","Animals", "Plants", "Rights"]
 }

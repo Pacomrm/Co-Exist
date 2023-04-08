@@ -67,3 +67,10 @@ export const loadAllODSs = () => async dispatch => {
         return console.error(e.message);
     }
 }
+/*Action to get projects by ODS*/
+// const getUser = (id) => {
+//     return async (dispatch, getState) => {
+//         const payload = await fetchUser(id)
+//         dispatch({type: 'users/addUser', payload: payload})
+//     }
+// }

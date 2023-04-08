@@ -6,7 +6,7 @@
   "scripts": {
     "client": "npm start --prefix ../client",
     "server": "node server.js",
-    "start": "concurrently \"npm run server\" \"npm run client\""
+    "start": "npm run server"
   },
   "dependencies": {
     "body-parser": "^1.19.0",

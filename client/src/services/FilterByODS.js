@@ -15,7 +15,7 @@ export default function filterByODS(){
     },[]);
 
     function handleClickODSFilter(e){
-        console.log("inside filter",e.target.name)
+        console.log("inside filter",e.target.name);
     }
     if(allODSs.length > 1){
         allODSs.forEach((o,index) => {
