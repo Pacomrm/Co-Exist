@@ -2,19 +2,19 @@ import * as React from "react";
 import {Nav} from "react-bootstrap";
 import {useEffect, useState} from "react";
 import FilterByODS from '../../services/FilterByODS.js'
+import {useDispatch} from "react-redux";
+import {loadAllProjects} from "../../features/projects/projectSlice";
 
 export function ProjectNav(){
+    const dispatch = useDispatch();
     const [filter, setFilter] = useState({
         ods: false,
         location: false,
         needs: false
     });
-    let odsNavFilter = '';
+    let navFilter = '';
 
-    if(filter.ods == true){
-        console.log("filter");
-        odsNavFilter = <FilterByODS/>;
-    }
+
 
     function handleClickFilters(e){
         console.log(e.target.value);
@@ -22,6 +22,15 @@ export function ProjectNav(){
             ...filter,
             [e.target.name]: true
         })
+        if(filter.ods == true){
+            console.log("filter");
+            navFilter = <FilterByODS/>;
+        }
+        // if(filter.location == true){
+        //     console.log("filter");
+        //     navFilter = <FilterByODS/>;
+        // }
+
     }
     function cleanFilters(){
         setFilter({
@@ -29,6 +38,7 @@ export function ProjectNav(){
             location: false,
             needs: false
         });
+        dispatch(loadAllProjects());
     }
 
     return (
@@ -48,7 +58,7 @@ export function ProjectNav(){
                     <Nav.Link style={{color:'333333'}} name="clean" eventKey="link-4" onClick={cleanFilters}> / start again</Nav.Link>
                 </Nav.Item>
             </Nav>
-            {odsNavFilter}
+            {navFilter}
         </section>
     )
 }

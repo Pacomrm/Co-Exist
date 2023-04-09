@@ -7,7 +7,7 @@ import {projectsSlice} from '../features/projects/projectSlice.js'
 const reducer = combineReducers({
     projects: projectsSlice.reducer,
 });
-console.log("store",projectsSlice);
+// console.log("store",projectsSlice);
 
 
 const preloadedState = {

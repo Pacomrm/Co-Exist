@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
-import axios from 'axios';
+import axios, {all} from 'axios';
 
 // export const CATEGORIES = ['agriculture', 'food', 'transportation', 'clothing', 'healthcare', 'personal', 'education', 'entertainment'];
 // const initialStateProject = Object.fromEntries(CATEGORIES.map(category => [category, []]))
@@ -41,11 +41,10 @@ export const projectsSlice = createSlice({
 })
 
 export default projectsSlice.reducer;
-export const {loadProjects, loadODSs} = projectsSlice.actions;
+const {loadProjects, loadODSs} = projectsSlice.actions;
 export const selectAllProjects = (state) => state.projects.allProjects;
 export const selectAllODS = (state) => state.projects.allODSs;
 
-console.log(projectsSlice)
 
 /* Actions for slice Projects */
 export const loadAllProjects = () => async dispatch => {
@@ -68,9 +67,17 @@ export const loadAllODSs = () => async dispatch => {
     }
 }
 /*Action to get projects by ODS*/
-// const getUser = (id) => {
-//     return async (dispatch, getState) => {
-//         const payload = await fetchUser(id)
-//         dispatch({type: 'users/addUser', payload: payload})
-//     }
-// }
+export const loadProjectsByODS = (odsName) => {
+    return async (dispatch, getState) => {
+        const allProjects = await axios.get(`${API_URL}`);
+        let projectsByODS =[];
+        allProjects.data.map( project => {
+            project.ods.map( o => {
+                if(o === odsName){
+                    projectsByODS.push(project);
+                }
+            })
+        })
+        dispatch(loadProjects(projectsByODS));
+    }
+}

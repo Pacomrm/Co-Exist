@@ -10,14 +10,10 @@ export function Projects(){
 
     const allProjects = useSelector(selectAllProjects);
     const dispatch = useDispatch();
-    // console.log("All Projects1 ",allProjects);
     let display = {};
-    // const dispatch = useDispatch();
-    // const [allProjects, setAllProjects] = useState({});
 
     useEffect(()=>{
         dispatch(loadAllProjects());
-        // setAllProjects(store.getState());
     },[])
 
     if(allProjects.length > 1){
