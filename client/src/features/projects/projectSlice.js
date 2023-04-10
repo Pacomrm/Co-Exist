@@ -1,34 +1,19 @@
 import {createSlice} from '@reduxjs/toolkit';
 import axios, {all} from 'axios';
 
-// export const CATEGORIES = ['agriculture', 'food', 'transportation', 'clothing', 'healthcare', 'personal', 'education', 'entertainment'];
-// const initialStateProject = Object.fromEntries(CATEGORIES.map(category => [category, []]))
+const API_URL_BASE = "http://localhost:3000/";
 const API_URL = "http://localhost:3000/projects";
 const API_URL_ODS = "http://localhost:3000/ods";
-
-// export const project = createSlice({
-//     name: 'project',
-//     initialState: initialStateProject,
-//     reducers: {
-//         createProject(state, action) {},
-//         updateProject(state, action) {},
-//         deleteProject(state, action) {},
-//     },
-// })
-
-// // Extract the action crweators object and the reducer
-// const { actions, reducer } = projectSlice
-// // Extract and export each action creator by name
-// export const { createPost, updatePost, deletePost } = actions
-// // Export the reducer, either as a default or named export
-// export default reducer
-
+const API_URL_LOCATIONS = "http://localhost:3000/locations";
+const API_URL_NEEDS = "http://localhost:3000/needs";
 
 export const projectsSlice = createSlice({
     name: 'projects',
     initialState: {
         allProjects: [{}],
-        allODSs:[]
+        allODSs:[],
+        allLocations:[],
+        allNeeds:[],
     },
     reducers: {
         loadProjects: (state, action) => {
@@ -36,14 +21,22 @@ export const projectsSlice = createSlice({
         },
         loadODSs: (state, action) =>{
             state.allODSs = action.payload;
+        },
+        loadLocations: (state, action) =>{
+            state.allLocations = action.payload;
+        },
+        loadNeeds: (state, action) =>{
+            state.allNeeds = action.payload;
         }
     },
 })
 
 export default projectsSlice.reducer;
-const {loadProjects, loadODSs} = projectsSlice.actions;
+const {loadProjects, loadODSs, loadLocations,loadNeeds} = projectsSlice.actions;
 export const selectAllProjects = (state) => state.projects.allProjects;
 export const selectAllODS = (state) => state.projects.allODSs;
+export const selectAllLocations = (state) => state.projects.allLocations;
+export const selectAllNeeds = (state) => state.projects.allNeeds;
 
 
 /* Actions for slice Projects */
@@ -52,6 +45,15 @@ export const loadAllProjects = () => async dispatch => {
         const allProjectsRes = await axios.get(`${API_URL}`);
         dispatch(loadProjects(allProjectsRes.data));
         // console.log("inside all projects",allProjectsRes)
+    }catch(e){
+        return console.error(e.message);
+    }
+}
+/*Actions for filter needs*/
+export const loadAllNeeds = () => async dispatch => {
+    try{
+        const allNeedsRes = await axios.get(`${API_URL_NEEDS}`);
+        dispatch(loadNeeds(allNeedsRes.data));
     }catch(e){
         return console.error(e.message);
     }
@@ -66,18 +68,49 @@ export const loadAllODSs = () => async dispatch => {
         return console.error(e.message);
     }
 }
-/*Action to get projects by ODS*/
-export const loadProjectsByODS = (odsName) => {
-    return async (dispatch, getState) => {
+/*Actions for filter locations*/
+export const loadAllLocations = () => async dispatch => {
+    try{
+        const allLocationsRes = await axios.get(`${API_URL_LOCATIONS}`);
+        dispatch(loadLocations(allLocationsRes.data));
+    }catch(e){
+        return console.error(e.message);
+    }
+}
+/*One function to load filters*/
+export const loadProjectsByFilterArray = (name,filterType) => async dispatch => {
+    try{
+        let categoryFilter = [];
+        categoryFilter = Object.entries(filterType).filter( ([val,i]) => i === true);
+        let filterFinal = categoryFilter[0][0];
+
         const allProjects = await axios.get(`${API_URL}`);
-        let projectsByODS =[];
+        let projectsFiltered =[];
         allProjects.data.map( project => {
-            project.ods.map( o => {
-                if(o === odsName){
-                    projectsByODS.push(project);
+            project[filterFinal].map( o => {
+                if(o === name){
+                    projectsFiltered.push(project);
                 }
             })
         })
-        dispatch(loadProjects(projectsByODS));
+        dispatch(loadProjects(projectsFiltered));
+
+    }catch(e){
+        return console.error(e.message);
+    }
+}
+
+/*Action to get projects by ODS*/
+export const loadProjectsByLocation = (locationName) => {
+    return async (dispatch, getState) => {
+        const allProjects = await axios.get(`${API_URL}`);
+        let projectsByLocation =[];
+        allProjects.data.map( project => {
+            console.log(project.location);
+            if(project.location === locationName){
+                projectsByLocation.push(project);
+            }
+        })
+        dispatch(loadProjects(projectsByLocation));
     }
 }

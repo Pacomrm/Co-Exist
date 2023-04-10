@@ -1,44 +1,39 @@
 import * as React from "react";
 import {Nav} from "react-bootstrap";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import FilterByODS from '../../services/FilterByODS.js'
 import {useDispatch} from "react-redux";
 import {loadAllProjects} from "../../features/projects/projectSlice";
 
 export function ProjectNav(){
+    const valueRef = useRef(false);
     const dispatch = useDispatch();
     const [filter, setFilter] = useState({
         ods: false,
         location: false,
         needs: false
     });
-    let navFilter = '';
-
-
+    let navFilter = false;
 
     function handleClickFilters(e){
-        console.log(e.target.value);
+
         setFilter({
             ...filter,
             [e.target.name]: true
         })
-        if(filter.ods == true){
-            console.log("filter");
-            navFilter = <FilterByODS/>;
-        }
-        // if(filter.location == true){
-        //     console.log("filter");
-        //     navFilter = <FilterByODS/>;
-        // }
 
     }
-    function cleanFilters(){
+    function cleanFilters() {
         setFilter({
             ods: false,
             location: false,
             needs: false
         });
         dispatch(loadAllProjects());
+    }
+    const cleanFromChild = (val) => {
+        console.log("llego",val);
+        cleanFilters();
     }
 
     return (
@@ -58,7 +53,8 @@ export function ProjectNav(){
                     <Nav.Link style={{color:'333333'}} name="clean" eventKey="link-4" onClick={cleanFilters}> / start again</Nav.Link>
                 </Nav.Item>
             </Nav>
-            {navFilter}
+            <FilterByODS type={filter} valueRef={valueRef}/>
+
         </section>
     )
 }

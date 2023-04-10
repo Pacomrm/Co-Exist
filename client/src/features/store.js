@@ -24,6 +24,8 @@ const preloadedState = {
         }
     ],
     allODSs: ['o1','o2','o3'],
+    allLocations: ["San Jose, Costa Rica"],
+    allNeeds: ["Clothes","Tools","Money"]
 }
 
 
