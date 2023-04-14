@@ -8,6 +8,8 @@ import {
     selectAllODS
 } from "../features/projects/projectSlice";
 import {useEffect} from "react";
+import Breadcrumbs from "@mui/material/Breadcrumbs";
+import {Link} from "react-router-dom";
 
 export default function FilterProjects(filterType){
 
@@ -40,22 +42,16 @@ export default function FilterProjects(filterType){
     }
     if(allCategories.length > 0 ){
         allCategories.forEach((o,index) => {
-            // console.log(index);
             displayAllCategories.push(
-                <Nav.Item key={index}>
-                    <Nav.Link name={o} id={o} eventKey="link-0" onClick={handleClickODSFilter}>{o}</Nav.Link>
-                </Nav.Item>
+                <Link key={index} name={o} id={o} underline="hover" color="inherit" onClick={handleClickODSFilter}>{o}</Link>
             )
         })
     }else if(filterType.type !== true){
         return ;
-        // <Nav.Item><p>No projects available for this filter</p></Nav.Item>;
     }
     return (
-        <Nav className="justify-content-center" activeKey="/home">
-            {
-                displayAllCategories
-            }
-        </Nav>
+        <Breadcrumbs aria-label="breadcrumb">
+            {displayAllCategories}
+        </Breadcrumbs>
     )
 }
