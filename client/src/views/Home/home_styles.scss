@@ -1,0 +1,176 @@
+*{
+  margin: 0;
+}
+
+.container-home{
+  max-width: 1080px;
+  max-height: 1080px;
+  width: 1080px;
+  height: 1080px;
+  min-width: 400px;
+  background-color: #E2FFDB;
+  margin: 0 auto;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+/*SASS VARIABLES*/
+$font-highlight: 600;
+$courses-BG-color: #BFFBC5;
+$resources-BG-color:#FFCECE;
+$projects-BG-color: #FFF1C1;
+$resource-BG-color: #FFEEEE;
+
+/*HERO MAIN HOME*/
+.banner-container-home{
+  width: 1080px;
+  height: 251px;
+  background-color: #D9D9D9;
+  margin-bottom: 58px;
+}
+.banner-home-mask{
+  width: 1080px;
+  height: 251px;
+  object-fit: cover;
+  top:20px;
+  background-position: center center;
+}
+/*MAIN*/
+.main-container-home{
+  max-width: 1080px;
+  max-height: 770px;
+  width: 1080px;
+  height: 770px;
+  background-color: #E2FFDB;
+}
+.center-home{
+  max-width: 1080px;
+  max-height: 520px;
+  width: 1080px;
+  height: 520px;
+  min-width: 400px;
+  margin-bottom: 58px;
+  display: flex;
+  gap:13px;
+  flex-wrap: wrap;
+}
+/*COURSES AREA - HOME*/
+.left-block-home{
+  max-width: 600px;
+  max-height: 520px;
+  width: 356px;
+  height: 520px;
+  overflow: hidden;
+  background-color: #BFFBC5;
+}
+.content-courses-home{
+  margin: 10px 30px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.content-courses-home :first-child{
+  margin-bottom:5px;
+}
+.highlight-bold{
+  font-weight: $font-highlight;
+  font-size: 2rem;
+}
+.cta{
+  font-weight: $font-highlight;
+  font-size: 1.5rem;
+  color: #333333;
+  margin-top: 20px;
+}
+/*EACH COURSE INJECTED IN HOME */
+/* This will be an independent component*/
+.course-home{
+  width: 291px;
+  height: 137px;
+  background-color: #D9D9D9;
+  margin-bottom:20px;
+}
+/* RESOURCES AND PROJECTS*/
+.right-block-home{
+  max-width: 710px;
+  max-height: 520px;
+  width: 710px;
+  height: 520px;
+  flex: 400px;
+  background-color: #E2FFDB;
+}
+/*PROJECTS CONTAINER*/
+.projects-container-home{
+  width: 710px;
+  height: 248px;
+  background-color: $projects-BG-color;
+  margin-bottom: 24px;
+}
+.content-projects-home{
+  display: flex;
+  padding: 5px 20px;
+  flex-wrap: wrap;
+  :first-child{
+    flex: 0 0 300px;
+  }
+}
+/*PROJECT INJECTED IN HOME*/
+/*This will be an independent component*/
+.project-home{
+  width: 291px;
+  height: 212px;
+  margin-left: auto;
+  font-size: 1rem;
+  background-color: #FAE0C8;
+  flex: 0 0 291px;
+  margin-top: 12px;
+  figure{
+    margin: 0;
+    width: 291px;
+    height: 122px;
+    object-fit: cover;
+    background-position: center center;
+  }
+  blockquote{
+    padding: 0.3rem 0.4rem;
+  }
+}
+
+/*RESOURCES CONTAINER*/
+.resources-container-home{
+  width: 710px;
+  height: 248px;
+  background-color: $resources-BG-color;
+}
+.content-resources-home{
+  display: flex;
+  padding: 5px 20px;
+  flex-wrap: wrap;
+  :first-child{
+    flex: 0 0 318px;
+    //margin-right: 3px;
+  }
+}
+.resource-home{
+  width: 352px;
+  height: 105px;
+  flex: 0 0 352px;
+  margin-left: auto;
+  margin-top: 0.5rem;
+  font-weight: 400;
+  font-size: 0.8rem;
+  background-color: $resource-BG-color;
+  blockquote{
+    padding: 7px;
+  }
+}
+
+/*FOOTER*/
+.footer-container-home{
+  width: 1080px;
+  height: 190px;
+  background-color: #D9D9D9
+}
+/*SPECIFIC ADD*/
+.ads-home{
+  width: 1080px;
+  height: 190px;
+}

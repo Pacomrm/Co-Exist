@@ -1,7 +1,7 @@
 import * as React from "react";
 import {Nav} from "react-bootstrap";
 import {useEffect, useRef, useState} from "react";
-import FilterByODS from '../../services/FilterByODS.js'
+import FilterProjects from '../../services/FilterProjects.js'
 import {useDispatch} from "react-redux";
 import {loadAllProjects} from "../../features/projects/projectSlice";
 
@@ -53,7 +53,7 @@ export function ProjectNav(){
                     <Nav.Link style={{color:'333333'}} name="clean" eventKey="link-4" onClick={cleanFilters}> / start again</Nav.Link>
                 </Nav.Item>
             </Nav>
-            <FilterByODS type={filter} valueRef={valueRef}/>
+            <FilterProjects type={filter} valueRef={valueRef}/>
 
         </section>
     )

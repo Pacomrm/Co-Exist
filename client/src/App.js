@@ -1,7 +1,8 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 import {Projects} from './views/Projects/Projects';
 import {Link, BrowserRouter, Route, Routes,} from 'react-router-dom';
+import Home from "./views/Home/Home";
 
 
 function App() {
@@ -17,12 +18,12 @@ function App() {
                   </nav>
                   <div className="container mt-5">
                       <Routes>
-                          <Route path="/" element={''} />
+                          <Route path="/" element={<Home/>} />
                           <Route path="/projects" element={<Projects />} />
                           {/*<Route path="/create" element={} />*/}
                       </Routes>
                   </div>
-                  </BrowserRouter>
+              </BrowserRouter>
           </div>
 
   );

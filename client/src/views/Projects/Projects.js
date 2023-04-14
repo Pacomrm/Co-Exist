@@ -24,7 +24,7 @@ export function Projects(){
 
     return (
         <>
-            <Container fluid="md">
+            <Container>
                 <ProjectNav/>
                 <section className="projects-upper-container">
                     {display}

@@ -1,5 +1,4 @@
-import {applyMiddleware, combineReducers, createStore} from 'redux';
-import thunk from 'redux-thunk';
+import {combineReducers} from 'redux';
 import {configureStore} from "@reduxjs/toolkit";
 import logger from 'redux-logger'
 import {projectsSlice} from '../features/projects/projectSlice.js'
@@ -7,8 +6,6 @@ import {projectsSlice} from '../features/projects/projectSlice.js'
 const reducer = combineReducers({
     projects: projectsSlice.reducer,
 });
-// console.log("store",projectsSlice);
-
 
 const preloadedState = {
     allProjects: [
@@ -27,7 +24,6 @@ const preloadedState = {
     allLocations: ["San Jose, Costa Rica"],
     allNeeds: ["Clothes","Tools","Money"]
 }
-
 
 const store = configureStore({
     reducer,
