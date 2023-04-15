@@ -3,8 +3,10 @@ import {ProjectNav} from "./ProjectNav";
 import {useDispatch, useSelector} from "react-redux";
 import {loadAllProjects,selectAllProjects} from "../../features/projects/projectSlice";
 import ProjectsList from "../../views/Projects/ProjectsList";
+import './projects_styles.scss';
 
 import {Container} from "react-bootstrap";
+import {Grid} from "@mui/material";
 
 export function Projects(){
 
@@ -23,26 +25,14 @@ export function Projects(){
     }
 
     return (
-        <>
-            <Container>
-                <ProjectNav/>
-                <section className="projects-upper-container">
-                    {display}
-                </section>
-            </Container>
-
-
-
-            {/*<section className="projects-bottom-container">*/}
-            {/*    <h2>Sign in to interact</h2>*/}
-            {/*    <p>Form</p>*/}
-            {/*    <div className="projects-signin-form">*/}
-
-            {/*    </div>*/}
-            {/*</section>*/}
-        </>
+        <div className="projects-container">
+            <div className="grid-container">
+                <Grid container>
+                    <h2>Projects</h2>
+                    <Grid item xs={12} ><ProjectNav/></Grid>
+                    <Grid item xs={12} >{display}</Grid>
+                </Grid>
+            </div>
+        </div>
     )
 }
-
-
-// Container for display projects component

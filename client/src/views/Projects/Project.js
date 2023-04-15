@@ -1,9 +1,12 @@
 import * as React from 'react';
 import Card from 'react-bootstrap/Card';
+import {Button, CardActions, CardContent, CardMedia, Typography} from "@mui/material";
+import {useState} from "react";
+import imgProject from '../../assets/home/project_home.jpg'
 
 
 export default function Project({project}){
-    // console.log("final en project",project);
+    const [expand, setExpanded] = useState(false);
     const founders = ['Founders: '];
     const ods = ['ODS: '];
 
@@ -18,26 +21,56 @@ export default function Project({project}){
             founders.push(i + ' / ');
         })
     }
+    function handleExpand(e){
+        setExpanded(true);
+        console.log("inside expand",e.target.name);
 
+        if(expand){
+            setExpanded(false);
+            console.log("inside expand",expand);
+        }
+
+    }
     return (
-        <>
-        <Card style={{ width: '18rem' }}>
-            {/*<Card.Img variant="top" src="holder.js/100px180" />*/}
-            <Card.Body>
-                <Card.Title>{project.name}</Card.Title>
-                <div>
-                    <Card.Text>
-                        {project.description}
-                    </Card.Text>
-                </div>
-                <div>
-                    <div><p> <span>{ods}</span></p></div>
-                    <div><p>{founders}</p></div>
-                </div>
-
-                {/*<Button variant="primary">Go somewhere</Button>*/}
-            </Card.Body>
-        </Card>
-        </>
+        <div>
+            {
+                expand
+                    ? <Card md={{maxWidth: 930}}>
+                        <CardMedia
+                            component="img"
+                            md={{ height: 200}}
+                            image={imgProject}
+                            title="green iguana"
+                        />
+                        <CardContent>
+                            <Typography gutterBottom variant="h5" component="div">{project.name}</Typography>
+                            <Typography variant="body2" color="text.secondary">{project.description}</Typography>
+                            <Typography>{ods}</Typography>
+                            <Typography>{founders}</Typography>
+                        </CardContent>
+                        <CardActions>
+                            <Button size="big" onClick={handleExpand}>Cerrar</Button>
+                        </CardActions>
+                    </Card>
+                :
+                    <Card sx={{maxWidth: 130 }}>
+                    <CardMedia
+                        component="img"
+                        sx={{ height: 140 }}
+                        image={imgProject}
+                        title={project.name}
+                    />
+                    <CardContent>
+                        <Typography gutterBottom variant="h5" component="div">{project.name}</Typography>
+                        <Typography variant="body2" color="text.secondary">{project.description}</Typography>
+                        <Typography>{ods}</Typography>
+                        <Typography>{founders}</Typography>
+                    </CardContent>
+                    <CardActions>
+                        <Button size="small" onClick={handleExpand}>Conocer</Button>
+                    </CardActions>
+                </Card>
+            }
+        </div>
     )
 }

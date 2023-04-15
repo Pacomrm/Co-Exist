@@ -1,9 +1,22 @@
+$projectsBodyColor: #FFF0E2;
+
 .main-nav-projects{
   display: flex;
   justify-content: center;
+  padding-bottom: 2vh;
   a{
     font-size: 1.2rem;
   }
+}
+.projects-container{
+  height: 100vh;
+  background-color: $projectsBodyColor !important;
+}
+.grid-container{
+  margin:6vh;
+  display: flex;
+  justify-content: center;
+  padding-top:2vh ;
 }
 
 

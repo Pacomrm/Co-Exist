@@ -37,14 +37,18 @@ export function ProjectNav(){
     }
 
     return (
-        <nav className={"main-nav-projects"}>
-            <Breadcrumbs aria-label="breadcrumb">
-                <Link name="ods" id="byODS" underline="hover" color="primary" onClick={handleClickFilters}>ODS </Link>
-                <Link name="location" id="location" underline="hover" color="inherit" onClick={handleClickFilters}>Localidad</Link>
-                <Link name="needs" id="needs" underline="hover" color="inherit" onClick={handleClickFilters}>Necesidades</Link>
-                <Link name="clean" id="clean" underline="hover" color="inherit" onClick={cleanFilters}>Empeza de nuevo</Link>
-            </Breadcrumbs>
-            <FilterProjects type={filter}/>
-        </nav>
+        <div>
+            <nav className={"main-nav-projects"}>
+                <h6 style={{display: 'inline', marginRight:'auto'}}>Escoge como ver los proyectos</h6>
+                <Breadcrumbs aria-label="breadcrumb">
+                    <Link name="ods" id="byODS" underline="hover" color="primary" onClick={handleClickFilters}>ODS </Link>
+                    <Link name="location" id="location" underline="hover" color="inherit" onClick={handleClickFilters}>Localidad</Link>
+                    <Link name="needs" id="needs" underline="hover" color="inherit" onClick={handleClickFilters}>Necesidades</Link>
+                    <Link name="clean" id="clean" underline="hover" color="inherit" onClick={cleanFilters}>Empeza de nuevo</Link>
+                </Breadcrumbs>
+                <FilterProjects type={filter}/>
+            </nav>
+        </div>
+
     )
 }
