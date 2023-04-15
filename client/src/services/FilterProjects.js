@@ -7,27 +7,30 @@ import {
     selectAllLocations, selectAllNeeds,
     selectAllODS
 } from "../features/projects/projectSlice";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import {Link} from "react-router-dom";
 
-export default function FilterProjects(filterType){
+export default function FilterProjects(filterType,clean){
 
     const dispatch = useDispatch();
     const allODS = useSelector(selectAllODS);
     const allLocations = useSelector(selectAllLocations);
     const allNeeds = useSelector(selectAllNeeds);
-    let allCategories = '';
+    const [filterPresent, setFilterPresent] = useState(false);
+    let allCategories = {};
     let displayAllCategories = [];
 
     if(filterType.type.ods === true){allCategories = allODS}
     if(filterType.type.location === true){allCategories = allLocations}
     if(filterType.type.needs === true){allCategories = allNeeds}
 
+    console.log("dentro de filter",filterType.type);
     useEffect(()=>{
         dispatch(loadAllODSs())
         dispatch(loadAllLocations())
         dispatch(loadAllNeeds())
+
     },[]);
 
     function handleClickODSFilter(e){
@@ -38,17 +41,23 @@ export default function FilterProjects(filterType){
         }else{
             dispatch(loadProjectsByFilterArray(e.target.name,filterType.type));
         }
-
     }
+
     if(allCategories.length > 0 ){
+        // setFilterPresent(true);
         allCategories.forEach((o,index) => {
             displayAllCategories.push(
-                <Link key={index} name={o} id={o} underline="hover" color="inherit" onClick={handleClickODSFilter}>{o}</Link>
+                <Link key={index} name={o}
+                      id={o}
+                      underline="hover"
+                      color="inherit"
+                      onClick={handleClickODSFilter}
+                >{o}</Link>
             )
         })
-    }else if(filterType.type !== true){
-        return ;
+        allCategories = '';
     }
+
     return (
         <Breadcrumbs aria-label="breadcrumb">
             {displayAllCategories}

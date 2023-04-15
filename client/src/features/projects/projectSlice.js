@@ -39,7 +39,7 @@ export const selectAllLocations = (state) => state.projects.allLocations;
 export const selectAllNeeds = (state) => state.projects.allNeeds;
 
 
-/* Actions for slice Projects */
+/* Action to load all projects initially */
 export const loadAllProjects = () => async dispatch => {
     try{
         const allProjectsRes = await axios.get(`${API_URL}`);
@@ -49,7 +49,7 @@ export const loadAllProjects = () => async dispatch => {
         return console.error(e.message);
     }
 }
-/*Actions for filter needs*/
+/*Action for filter needs*/
 export const loadAllNeeds = () => async dispatch => {
     try{
         const allNeedsRes = await axios.get(`${API_URL_NEEDS}`);
@@ -58,7 +58,7 @@ export const loadAllNeeds = () => async dispatch => {
         return console.error(e.message);
     }
 }
-/*Actions for filter ods*/
+/*Action for filter ods*/
 export const loadAllODSs = () => async dispatch => {
     try{
         const allODSRes = await axios.get(`${API_URL_ODS}`);
@@ -68,7 +68,7 @@ export const loadAllODSs = () => async dispatch => {
         return console.error(e.message);
     }
 }
-/*Actions for filter locations*/
+/*Action for filter locations*/
 export const loadAllLocations = () => async dispatch => {
     try{
         const allLocationsRes = await axios.get(`${API_URL_LOCATIONS}`);
@@ -77,7 +77,8 @@ export const loadAllLocations = () => async dispatch => {
         return console.error(e.message);
     }
 }
-/*One function to load filters*/
+
+/*One function to select projects according to the filter*/
 export const loadProjectsByFilterArray = (name,filterType) => async dispatch => {
     try{
         let categoryFilter = [];
