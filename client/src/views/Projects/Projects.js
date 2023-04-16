@@ -28,7 +28,7 @@ export function Projects(){
         <div className="projects-container">
             <div className="grid-container">
                 <Grid container>
-                    <h2>Projects</h2>
+                    <h2>Proyectos</h2>
                     <Grid item xs={12} ><ProjectNav/></Grid>
                     <Grid item xs={12} >{display}</Grid>
                 </Grid>

@@ -3,10 +3,15 @@ $projectsBodyColor: #FFF0E2;
 .main-nav-projects{
   display: flex;
   justify-content: center;
-  padding-bottom: 2vh;
+  padding-bottom: 1vh;
   a{
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
+}
+.subFilter-nav-projects{
+  display: flex;
+  justify-content: end;
+  margin-bottom: 2vh;
 }
 .projects-container{
   height: 100vh;

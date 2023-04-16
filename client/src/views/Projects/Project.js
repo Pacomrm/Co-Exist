@@ -4,7 +4,6 @@ import {Button, CardActions, CardContent, CardMedia, Grid, Typography} from "@mu
 import {useState} from "react";
 import imgProject from '../../assets/home/project_home.jpg'
 
-
 export default function Project({project}){
     const [expand, setExpanded] = useState(false);
     const founders = ['Founders: '];
@@ -15,7 +14,6 @@ export default function Project({project}){
             ods.push(o + ' - ');
         })
     }
-
     if(project.founders !== ''){
         project.founders.forEach( i => {
             founders.push(i + ' / ');
@@ -24,12 +22,10 @@ export default function Project({project}){
     function handleExpand(e){
         setExpanded(true);
         console.log("inside expand",e.target.name);
-
         if(expand){
             setExpanded(false);
             console.log("inside expand",expand);
         }
-
     }
     return (
         <div>
@@ -72,10 +68,6 @@ export default function Project({project}){
                                 <Button size="small" onClick={handleExpand}>Conocer</Button>
                             </CardActions>
                         </Card>
-
-
-
-
             }
         </div>
     )
