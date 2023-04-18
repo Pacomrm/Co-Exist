@@ -1,10 +1,13 @@
 *{
   margin: 0;
 }
+figure{
+  margin:0 !important;
+}
 $homeBodyColor: #FFF0E2;
 .container-home{
   max-width: 1080px;
-  max-height: 1080px;
+  //max-height: 1080px;
   width: 1080px;
   height: 1080px;
   min-width: 400px;
@@ -23,31 +26,43 @@ $resource-BG-color: #FFEEEE;
 
 /*HERO MAIN HOME*/
 .banner-container-home{
-  width: 1080px;
-  height: 251px;
+  max-width: 1080px;
   background-color: #D9D9D9;
   margin-bottom: 58px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.banner--container-text{
+  max-width: 540px;
+  width: 50vw;
+  padding-right: 2px;
+  height: 251px;
+  text-align: center;
+  flex: max(800px, 100%/3 - 20px);
+}
+.banner--container-img{
+  max-width: 540px;
+  width: 50vw;
+  flex: max(800px, 100%/3 - 20px);
 }
 .banner-home-mask{
-  width: 1080px;
-  height: 251px;
-  object-fit: cover;
-  top:20px;
+  max-width: 50vw;
+  max-height: 251px;
+  flex-shrink: 1;
+  object-fit: contain;
+  align-self: flex-end;
+  top: 20px;
   background-position: center center;
 }
 /*MAIN*/
 .main-container-home{
   max-width: 1080px;
-  max-height: 770px;
-  width: 1080px;
-  height: 770px;
+  display: flex;
   background-color: #E2FFDB;
 }
 .center-home{
   max-width: 1080px;
-  max-height: 520px;
-  width: 1080px;
-  height: 520px;
   min-width: 400px;
   margin-bottom: 58px;
   display: flex;
@@ -56,12 +71,12 @@ $resource-BG-color: #FFEEEE;
 }
 /*COURSES AREA - HOME*/
 .left-block-home{
-  max-width: 600px;
-  max-height: 520px;
-  width: 356px;
+  max-width: 356px;
+  width: 50vw;
   height: 520px;
   overflow: hidden;
   background-color: #BFFBC5;
+  flex: max(800px, 100%/3 - 20px);
 }
 .content-courses-home{
   margin: 10px 30px;
@@ -93,10 +108,9 @@ $resource-BG-color: #FFEEEE;
 .right-block-home{
   max-width: 710px;
   max-height: 520px;
-  width: 710px;
-  height: 520px;
-  flex: 400px;
+  width: 50vh;
   background-color: #E2FFDB;
+  flex: max(800px, 100%/3 - 20px);
 }
 /*PROJECTS CONTAINER*/
 .projects-container-home{
@@ -166,12 +180,57 @@ $resource-BG-color: #FFEEEE;
 
 /*FOOTER*/
 .footer-container-home{
-  width: 1080px;
-  height: 190px;
-  background-color: #D9D9D9
+  max-width: 1080px;
+  max-height: 251px;
+  background-color: #D9D9D9;
+  margin-bottom: 58px;
+  display: flex;
+  align-items: center;
+  figure{
+    align-self: flex-end;
+  }
+  figcaption{
+    display: block;
+    background-color: transparent;
+    max-width: 50vw;
+    width: 50vw;
+    text-align: center;
+  }
 }
+
 /*SPECIFIC ADD*/
-.ads-home{
-  width: 1080px;
-  height: 190px;
+
+.footer-home-mask{
+  max-width: 50vw;
+  max-height: 251px;
+  flex-shrink: 1;
+  object-fit: cover;
+  align-self: flex-end;
+  top: 20px;
+  margin-left: auto;
+  background-position: center center;
+}
+
+/*MEDIA QUERIES*/
+/* Styles to apply when viewport is less than 800px */
+@media (max-width: 900px) {
+  .left-block-home{
+    max-width: 100vw;
+    max-height: 260px;
+    //flex: max(800px, 100%/3 - 20px);
+  }
+  .projects-container-home{
+    width: 100vw;
+    max-height: 260px;
+    margin-bottom: 14px;
+  }
+  .resources-container-home{
+    width: 100vw;
+    max-height: 260px;
+  }
+  .banner--container-text{
+    width: 100vw;
+    max-height: 260px;
+  }
+
 }

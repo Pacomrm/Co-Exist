@@ -1,5 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit';
 import axios, {all} from 'axios';
+import {useFetch} from '../../services/useFetch';
+import {useSelector} from "react-redux";
 
 const API_URL_BASE = "http://localhost:3000/";
 const API_URL = "http://localhost:3000/projects";
@@ -38,44 +40,25 @@ export const selectAllODS = (state) => state.projects.allODSs;
 export const selectAllLocations = (state) => state.projects.allLocations;
 export const selectAllNeeds = (state) => state.projects.allNeeds;
 
-
 /* Action to load all projects initially */
 export const loadAllProjects = () => async dispatch => {
-    try{
-        const allProjectsRes = await axios.get(`${API_URL}`);
-        dispatch(loadProjects(allProjectsRes.data));
-        // console.log("inside all projects",allProjectsRes)
-    }catch(e){
-        return console.error(e.message);
-    }
+    const allProjectsRes = await useFetch(API_URL);
+    dispatch(loadProjects(allProjectsRes.data));
 }
-/*Action for filter needs*/
+/*Action to load all needs*/
 export const loadAllNeeds = () => async dispatch => {
-    try{
-        const allNeedsRes = await axios.get(`${API_URL_NEEDS}`);
-        dispatch(loadNeeds(allNeedsRes.data));
-    }catch(e){
-        return console.error(e.message);
-    }
+    const allNeedsRes = await useFetch(API_URL_NEEDS);
+    dispatch(loadNeeds(allNeedsRes.data));
 }
-/*Action for filter ods*/
+/*Action to load all ods*/
 export const loadAllODSs = () => async dispatch => {
-    try{
-        const allODSRes = await axios.get(`${API_URL_ODS}`);
-        dispatch(loadODSs(allODSRes.data));
-        // console.log("inside all projects",allODSRes)
-    }catch(e){
-        return console.error(e.message);
-    }
+    const allODSRes = await useFetch(API_URL_ODS);
+    dispatch(loadODSs(allODSRes.data));
 }
-/*Action for filter locations*/
+/*Action to load all locations*/
 export const loadAllLocations = () => async dispatch => {
-    try{
-        const allLocationsRes = await axios.get(`${API_URL_LOCATIONS}`);
-        dispatch(loadLocations(allLocationsRes.data));
-    }catch(e){
-        return console.error(e.message);
-    }
+    const allLocationsRes = await useFetch(API_URL_LOCATIONS);
+    dispatch(loadLocations(allLocationsRes.data));
 }
 
 /*One function to select projects according to the filter*/
@@ -101,17 +84,19 @@ export const loadProjectsByFilterArray = (name,filterType) => async dispatch => 
     }
 }
 
+
 /*Action to get projects by ODS*/
 export const loadProjectsByLocation = (locationName) => {
     return async (dispatch, getState) => {
-        const allProjects = await axios.get(`${API_URL}`);
-        let projectsByLocation =[];
-        allProjects.data.map( project => {
+        const actualProjects = getState().projects.allProjects;
+        console.log(actualProjects);
+        let filteredProjects =[];
+        actualProjects.map( project => {
             console.log(project.location);
             if(project.location === locationName){
-                projectsByLocation.push(project);
+                filteredProjects.push(project);
             }
         })
-        dispatch(loadProjects(projectsByLocation));
+        dispatch(loadProjects(filteredProjects));
     }
 }

@@ -12,6 +12,7 @@ import {
 } from "../../features/projects/projectSlice";
 import {Link} from "react-router-dom";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
+import {Button} from "@mui/material";
 
 export function ProjectNav(){
     const dispatch = useDispatch();
@@ -88,7 +89,7 @@ export function ProjectNav(){
                     <Link name="ods" id="byODS" underline="hover" color="primary" onClick={handleClickODS}>ODS</Link>
                     <Link name="location" id="location" underline="hover" color="inherit" onClick={handleClickLocation}>Localidad</Link>
                     <Link name="needs" id="needs" underline="hover" color="inherit" onClick={handleClickNeeds}>Necesidades</Link>
-                    <Link name="clean" id="clean" underline="hover" color="inherit" onClick={cleanFilters}>Empeza de nuevo</Link>
+                    <Link name="clean" id="clean" underline="hover" color="inherit" onClick={cleanFilters}><Button color="error" variant="outlined">Empieza de nuevo</Button></Link>
                 </Breadcrumbs>
             </nav>
             <nav className="subFilter-nav-projects">
