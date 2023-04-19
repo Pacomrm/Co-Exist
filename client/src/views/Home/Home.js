@@ -7,9 +7,9 @@ import adsIMG from '../../assets/home/ads_home.jpg';
 export default function Home(){
     return(
         <div className="container-home">
-            <header className="banner-container-home" aria-label="banner">
+            <header className="banner--container-home" aria-label="banner">
                 <div className="banner--container-text">
-                    <figcaption>Co-Exist</figcaption>
+                    <h1>Co-Exist</h1>
                 </div>
                 <div className="banner--container-img">
                     <img className="banner-home-mask" src={banner} alt="banner-home" aria-label="img-banner-home"/>
@@ -74,11 +74,13 @@ export default function Home(){
                     </section>
                 </section>
             </main>
-            <footer className="footer-container-home">
-                <figure >
-                    <img className="footer-home-mask" src={adsIMG} alt="banner-home" aria-label="img-banner-home"/>
-                </figure>
-                <figcaption>Join us</figcaption>
+            <footer className="banner--container-home">
+                <div className="banner--container-img">
+                    <img className="banner-home-mask" src={adsIMG} alt="banner-home" aria-label="img-banner-home"/>
+                </div>
+                <div className="banner--container-text">
+                    <h1>Join Us</h1>
+                </div>
             </footer>
         </div>
     )

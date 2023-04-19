@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {
     loadAllLocations, loadAllNeeds,
     loadAllODSs,
-    loadAllProjects, loadProjectsByFilterArray, loadProjectsByLocation,
+    loadAllProjects, loadProjectsByFilter,
     selectAllLocations,
     selectAllNeeds,
     selectAllODS
@@ -20,12 +20,12 @@ export function ProjectNav(){
     const allLocations = useSelector(selectAllLocations);
     const allNeeds = useSelector(selectAllNeeds);
     const [subFilter, setSubFilter] = useState([]);
-    let displayAllCategories = [];
     const [filter, setFilter] = useState({
         ods: false,
         location: false,
         needs: false
     });
+    let displayAllCategories = [];
 
     useEffect(()=>{
         dispatch(loadAllODSs())
@@ -56,16 +56,11 @@ export function ProjectNav(){
         dispatch(loadAllProjects());
     }
 
-    // Project Nav Sub filters //
+    // Project Nav - Sub filters //
 
     function handleClickSubFilter(e){
-        console.log(e.target.name);
-        if(filter.location === true){
-            dispatch(loadProjectsByLocation(e.target.name));
-            console.log(e.target.name);
-        }else{
-            dispatch(loadProjectsByFilterArray(e.target.name,filter.type));
-        }
+        const subFilterTemp = e.target.name;
+        dispatch(loadProjectsByFilter(filter,subFilterTemp));
     }
 
     if(subFilter.length > 0 ){

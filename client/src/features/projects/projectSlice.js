@@ -40,7 +40,7 @@ export const selectAllODS = (state) => state.projects.allODSs;
 export const selectAllLocations = (state) => state.projects.allLocations;
 export const selectAllNeeds = (state) => state.projects.allNeeds;
 
-/* Action to load all projects initially */
+/* Action to load all projects from DataBase*/
 export const loadAllProjects = () => async dispatch => {
     const allProjectsRes = await useFetch(API_URL);
     dispatch(loadProjects(allProjectsRes.data));
@@ -62,41 +62,33 @@ export const loadAllLocations = () => async dispatch => {
 }
 
 /*One function to select projects according to the filter*/
-export const loadProjectsByFilterArray = (name,filterType) => async dispatch => {
+export const loadProjectsByFilter = (filter, subFilter) => async (dispatch, getState) => {
+    const actualProjects = await useFetch(API_URL);
+    let filteredProjects =[];
+    let activeMainFilter = '';
+    Object.entries(filter).filter( ([val,i]) => {
+        if(i === true) {
+            activeMainFilter= val;
+        }
+    });
     try{
-        let categoryFilter = [];
-        categoryFilter = Object.entries(filterType).filter( ([val,i]) => i === true);
-        let filterFinal = categoryFilter[0][0];
-
-        const allProjects = await axios.get(`${API_URL}`);
-        let projectsFiltered =[];
-        allProjects.data.map( project => {
-            project[filterFinal].map( o => {
-                if(o === name){
-                    projectsFiltered.push(project);
+        actualProjects.data.map( project => {
+            const keys = Object.keys(project);
+            const values = Object.values(project);
+            //**CHECK IF EACH OBJECT INCLUDES THE MAIN FILTER AND IF IT'S AN ARRAY **//
+            if(keys.includes(activeMainFilter) && Array.isArray(project[activeMainFilter])){
+                for (const keyObj of project[activeMainFilter]) {
+                    if(keyObj === subFilter){
+                        filteredProjects.push(project);
+                    }
                 }
-            })
-        })
-        dispatch(loadProjects(projectsFiltered));
-
-    }catch(e){
-        return console.error(e.message);
-    }
-}
-
-
-/*Action to get projects by ODS*/
-export const loadProjectsByLocation = (locationName) => {
-    return async (dispatch, getState) => {
-        const actualProjects = getState().projects.allProjects;
-        console.log(actualProjects);
-        let filteredProjects =[];
-        actualProjects.map( project => {
-            console.log(project.location);
-            if(project.location === locationName){
+                //** IF IS NOT AN ARRAY, JUST CHECK THE VALUE AGAINST THE SUB-FILTER **//
+            }else if(project[activeMainFilter] === subFilter){
                 filteredProjects.push(project);
             }
-        })
+        });
         dispatch(loadProjects(filteredProjects));
+    }catch(e){
+        return console.error(e.message);
     }
 }
