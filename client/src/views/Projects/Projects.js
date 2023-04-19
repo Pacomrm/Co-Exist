@@ -37,12 +37,12 @@ export function Projects(){
                     newProjectForm
                         ?
                         <>
-                            <Link className="project--button-success" name="add-project" id="add-project" underline="hover" color="inherit" onClick={addNewProject}><Button color="error" variant="outlined">Cancelar</Button></Link>
+                            <Button className="project--button-success" color="error" variant="outlined" onClick={addNewProject}>Cancelar</Button>
                             <h2> FORM NEW PROJECT</h2>
                         </>
                         :
                         <>
-                            <Link className="project--button-success" name="add-project" id="add-project" underline="hover" color="inherit" onClick={addNewProject}><Button color="success" variant="outlined">Agregar Proyecto</Button></Link>
+                            <Button className="project--button-success" color="success" variant="outlined" onClick={addNewProject}>Agregar Proyecto</Button>
                             <Grid item xs={12} ><ProjectNav/></Grid>
                             <Grid item xs={12} >{display}</Grid>
                         </>
