@@ -79,8 +79,9 @@ export function ProjectNav(){
     return (
         <div>
             <nav className="main-nav-projects">
-                <h5 style={{display: 'inline', marginRight:'auto'}}>Escoge como ver los proyectos</h5>
+                <h5 className="title-filters">Escoge como ver los proyectos</h5>
                 <Breadcrumbs aria-label="breadcrumb">
+
                     <Link name="ods" id="byODS" underline="hover" color="primary" onClick={handleClickODS}>ODS</Link>
                     <Link name="location" id="location" underline="hover" color="inherit" onClick={handleClickLocation}>Localidad</Link>
                     <Link name="needs" id="needs" underline="hover" color="inherit" onClick={handleClickNeeds}>Necesidades</Link>

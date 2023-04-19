@@ -2,11 +2,17 @@ $projectsBodyColor: #FFF0E2;
 
 .main-nav-projects{
   display: flex;
-  justify-content: center;
-  padding-bottom: 1vh;
+  flex-wrap: wrap;
+  justify-content: end;
+  padding: 3vh 0;
   a{
     font-size: 1.3rem;
   }
+}
+.title-filters{
+  width: 100vw;
+  text-align: end;
+  height: 2rem;
 }
 .subFilter-nav-projects{
   display: flex;
@@ -22,6 +28,17 @@ $projectsBodyColor: #FFF0E2;
   display: flex;
   justify-content: center;
   padding-top:2vh ;
+
+  .project--title{
+    width: 0%;
+    margin: 2rem 0;
+    //padding-bottom: 4rem;
+  }
+  .project--button-success{
+    display: block;
+    position: absolute;
+    margin: 6rem 0;
+  }
 }
 .expandedCard{
   width: 100vh !important;
