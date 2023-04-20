@@ -40,6 +40,7 @@ export function Projects(){
                             <Button className="project--button-success" color="error" variant="outlined" onClick={addNewProject}>Cancelar</Button>
                             <h2> FORM NEW PROJECT</h2>
                             <h2> Testing circle CI and the first beta of the app</h2>
+                            <h1>this is happening </h1>
                         </>
                         :
                         <>
