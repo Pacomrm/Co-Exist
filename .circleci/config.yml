@@ -31,7 +31,9 @@ jobs:
       - image: cimg/node:14.17.0
     working_directory: cd client
     steps:
-      - pwd
+      - run:
+          name: write directory
+          command: pwd
       - checkout
       - run:
           name: Install dependencies
@@ -46,7 +48,9 @@ jobs:
       - image: cimg/node:14.17.0
     working_directory: cd server
     steps:
-      - pwd
+      - run:
+          name: write directory
+          command: pwd
       - checkout
       - run:
           name: Install dependencies
