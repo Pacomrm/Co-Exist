@@ -9,14 +9,14 @@ This platform aims to share, involve and empower ambassadors worldwide to keep p
 > This is in development, I am organizing information and making progress in all areas of the project as I go along. If you want to collaborate, please participate.
 > Detailed description at the end of this readme.
 
-1. Project management
+1. Project management 
 I am using Asana as the main repository for tasks, user stories, and task delegation.
 
-2. Design thinking
+2. Design thinking 
 This goes through different iterations, I like to spend time getting what's in my head out. And move forward with other areas of the project like creating documentation and code structure. Then I go back and iterate to get a clearer expression of what I hope to see for the user. Then I move on to other areas of the project. This can continue as many times as necessary. Of course, each round must be supported by budget and scope.
 
 3. Prototyping
-[Figma:] https://www.figma.com/file/rokr9nLkQuJ2lEihFOhkkb/CO-EXIST?node-id=0%3A1&t=nImrz5aeo4WGxIUA-1
+[Figma:](https://www.figma.com/file/rokr9nLkQuJ2lEihFOhkkb/CO-EXIST?node-id=0%3A1&t=nImrz5aeo4WGxIUA-1)
 I have 13 years of using Adobe tools, mainly Illustrator, Photoshop, After Effects, and Premier Pro. I was always using Illustrator and Photoshop for flyers, infographics, web design and so. Today, I'm deep into Figma. I'm excited every time I open Figma, it's like my mind has more tools to express itself.
 
 4. Requirements
@@ -38,22 +38,22 @@ My intention with this project is to update myself on the latest front-end devel
 
 ## Architecture
 
-* FrontEnd :
+FrontEnd :
 - React: 18.2
 - React-dom: 18.2
 - React-redux: 8.0.5
 - Redux-middleware
 - Redux-thunks
 
-* BackEnd :
--Express
--Node
+BackEnd :
+- Express
+- Node
 
-* Data :
+Data :
 - Mongo
 - GraphQL
 
-### Configuration
+## Configuration
 
 #### CI/CD
 1. CircleCI
