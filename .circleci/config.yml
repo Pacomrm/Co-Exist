@@ -11,6 +11,16 @@ jobs:
           command: pwd
       - checkout
       - run:
+          name: Install getent
+          command: sudo apt-get update && sudo apt-get install -y libc-bin
+
+      - run:
+          name: Check for getent command
+          command: which getent
+      - run:
+          name: Print HOME environment variable
+          command: echo "HOME=$HOME"
+      - run:
           name: Workaround old Docker images with incorrect $HOME
           command: |
             if [[ "$HOME" == "/" ]]; then
