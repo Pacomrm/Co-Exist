@@ -7,8 +7,8 @@ version: 2.1
 jobs:
   start-express:
     docker:
-      - image: circleci/node:14.17.0
-    working_directory: /Users/mrm/Documents/TECH/React/Redux/Co-exist/react-express-app/server
+      - image: cimg/node:14.17.0
+    working_directory: ~/Users/mrm/Documents/TECH/React/Redux/Co-exist/react-express-app/server
     steps:
       - checkout
       - run:
@@ -19,8 +19,8 @@ jobs:
           command: npm start:express
   start-client:
     docker:
-      - image: circleci/node:14.17.0
-    working_directory: ~/client
+      - image: cimg/node:14.17.0
+    working_directory: cd client
     steps:
       - checkout
       - run:
@@ -30,19 +30,23 @@ jobs:
             npm install
       - run:
           name: Start React app
-          command: npm run start:react
+          command: npm start
   start-json-server:
     docker:
-      - image: circleci/node:14.17.0
+      - image: cimg/node:14.17.0
     working_directory: cd server
     steps:
       - checkout
       - run:
           name: Install dependencies
-          command: npm install
+          command: |
+            cd client
+            npm install
       - run:
           name: Start JSON server
-          command: json-server --watch data.json
+          command: |
+            cd client
+            json-server --watch data.json
   deploy:
     machine:
       enabled: true
