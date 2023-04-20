@@ -5,25 +5,80 @@ version: 2.1
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/configuration-reference/#jobs
 jobs:
-  track-project--add-form:
-    # Specify the execution environment. You can specify an image from Docker Hub or use one of our convenience images from CircleCI's Developer Hub.
-    # See: https://circleci.com/docs/configuration-reference/#executor-job
+  start-express:
     docker:
-      - image: cimg/base:stable
-    # Add steps to the job
-    # See: https://circleci.com/docs/configuration-reference/#steps
+      - image: circleci/node:14.17.0
+    working_directory: ~/server
     steps:
       - checkout
       - run:
-          name: "First CI test"
-          command: "echo Hello, World!"
-
-# Orchestrate jobs using workflows
-# See: https://circleci.com/docs/configuration-reference/#workflows
+          name: Install dependencies
+          command: npm install
+      - run:
+          name: Start Express server
+          command: npm start:express
+  start-client:
+    docker:
+      - image: circleci/node:14.17.0
+    working_directory: ~/client
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: npm install
+      - run:
+          name: Start React app
+          command: npm run start:react
+  start-json-server:
+    docker:
+      - image: circleci/node:14.17.0
+    working_directory: ~/server
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: npm install
+      - run:
+          name: Start JSON server
+          command: json-server --watch data.json
+  deploy:
+    machine:
+      enabled: true
+    steps:
+      - checkout
+      - run:
+          name: Install Railway CLI
+          command: curl -sSL https://raw.githubusercontent.com/railwayapp/cli/master/install.sh | bash
+      - run:
+          name: Login to Railway
+          command: railway login
+      - run:
+          name: Link project to Railway
+          command: railway link
+      - run:
+          name: Deploy to Railway
+          command: railway deploy --env NODE_ENV=production --wait
 workflows:
-  beta:
+  version: 2
+  build-and-deploy:
     jobs:
-      - track-project--add-form:
+      - start-express:
+          filters:
+            branches:
+              only: project-add-form
+      - start-client:
+          filters:
+            branches:
+              only: project-add-form
+      - start-json-server:
+          filters:
+            branches:
+              only: project-add-form
+      - deploy:
+          requires:
+            - start-express
+            - start-client
+            - start-json-server
           filters:
             branches:
               only: project-add-form
