@@ -8,7 +8,7 @@ jobs:
   start-express:
     docker:
       - image: circleci/node:14.17.0
-    working_directory: ~/server
+    working_directory: /Users/mrm/Documents/TECH/React/Redux/Co-exist/react-express-app/server
     steps:
       - checkout
       - run:
@@ -25,14 +25,16 @@ jobs:
       - checkout
       - run:
           name: Install dependencies
-          command: npm install
+          command: |
+            cd client
+            npm install
       - run:
           name: Start React app
           command: npm run start:react
   start-json-server:
     docker:
       - image: circleci/node:14.17.0
-    working_directory: ~/server
+    working_directory: cd server
     steps:
       - checkout
       - run:
