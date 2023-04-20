@@ -23,4 +23,7 @@ jobs:
 workflows:
   beta:
     jobs:
-      - say-hello
+      - track-project--add-form:
+          filters:
+            branches:
+              only: project-add-form
