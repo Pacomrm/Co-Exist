@@ -10,7 +10,9 @@ jobs:
       - image: cimg/node:14.17.0
     working_directory: ~/Users/mrm/Documents/TECH/React/Redux/Co-exist/react-express-app/server
     steps:
-      - pwd
+      - run:
+          name: write directory
+          command: pwd
       - checkout
       - run:
           name: Workaround old Docker images with incorrect $HOME
