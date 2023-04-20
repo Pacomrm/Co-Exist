@@ -9,11 +9,9 @@ jobs:
       - run:
           name: write directory
           command: pwd
-      - checkout
       - run:
           name: Install getent
           command: sudo apt-get update && sudo apt-get install -y libc-bin
-
       - run:
           name: Check for getent command
           command: which getent
@@ -26,6 +24,7 @@ jobs:
             if [[ "$HOME" == "/" ]]; then
               export HOME=$(getent passwd $(id -u) | awk -F ':' '{print $6}')
             fi
+      - checkout
       - run:
           name: Install dependencies
           command: npm install
