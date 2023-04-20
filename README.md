@@ -98,11 +98,9 @@ Easy access getting ready for production, webpack.config
 #### References
 In order to refresh my procedures as a fullstack developer I'm sharing my favorite tools. Feedback is welcome.
 1. Asana
-![Main board]
-()
+![Main board](https://github.com/Pacomrm/Co-Exist/blob/project-add-form/assets/Asana_coexist_v1.png)
 2. Figma
-![Exploration + Mockups + Designs]
-()
+![Exploration + Mockups + Designs](https://github.com/Pacomrm/Co-Exist/blob/project-add-form/assets/Figma_coexist_v1.png)
 3. Coogle
 ![Mapping of all areas]
 ()
