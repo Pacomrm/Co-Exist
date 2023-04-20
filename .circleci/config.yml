@@ -25,16 +25,22 @@ jobs:
           command: npm install
       - run:
           name: Start Express server
-          command: npm start:express
+          command: npm start
   start-client:
     docker:
       - image: cimg/node:14.17.0
-    working_directory: cd client
+    working_directory: ~/Users/mrm/Documents/TECH/React/Redux/Co-exist/react-express-app/client
     steps:
       - run:
           name: write directory
           command: pwd
       - checkout
+      - run:
+          name: Workaround old Docker images with incorrect $HOME
+          command: |
+            if [[ "$HOME" == "/" ]]; then
+              export HOME=$(getent passwd $(id -u) | awk -F ':' '{print $6}')
+            fi
       - run:
           name: Install dependencies
           command: |
@@ -46,22 +52,24 @@ jobs:
   start-json-server:
     docker:
       - image: cimg/node:14.17.0
-    working_directory: cd server
+    working_directory: ~/Users/mrm/Documents/TECH/React/Redux/Co-exist/react-express-app/server
     steps:
       - run:
           name: write directory
           command: pwd
       - checkout
       - run:
-          name: Install dependencies
+          name: Workaround old Docker images with incorrect $HOME
           command: |
-            cd client
-            npm install
+            if [[ "$HOME" == "/" ]]; then
+              export HOME=$(getent passwd $(id -u) | awk -F ':' '{print $6}')
+            fi
+      - run:
+          name: Install dependencies
+          command: npm install
       - run:
           name: Start JSON server
-          command: |
-            cd client
-            json-server --watch data.json
+          command: json-server --watch data.json
   deploy:
     machine:
       enabled: true

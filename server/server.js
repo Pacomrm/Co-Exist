@@ -2,7 +2,7 @@ require('dotenv').config()
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const port = process.env.EXPRESS_PORT || 6001;
+const port = process.env.EXPRESS_PORT || 6002;
 app.use(bodyParser.json());
 
 app.get('/api/hello', (req, res) => {
