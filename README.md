@@ -19,7 +19,7 @@ This goes through different iterations, I like to spend time getting what's in m
 
 3. Prototyping:
 
-[Figma:](https://www.figma.com/file/rokr9nLkQuJ2lEihFOhkkb/CO-EXIST?node-id=0%3A1&t=nImrz5aeo4WGxIUA-1)
+Take a look at what's going on, [Figma:](https://www.figma.com/file/rokr9nLkQuJ2lEihFOhkkb/CO-EXIST?node-id=0%3A1&t=nImrz5aeo4WGxIUA-1)
 
 I have 13 years of using Adobe tools, mainly Illustrator, Photoshop, After Effects, and Premier Pro. I was always using Illustrator and Photoshop for flyers, infographics, web design and so. Today, I'm deep into Figma. I'm excited every time I open Figma, it's like my mind has more tools to express itself.
 
