@@ -8,7 +8,7 @@ jobs:
   start-express:
     docker:
       - image: cimg/node:14.17.0
-    working_directory: ~/Users/mrm/Documents/TECH/React/Redux/Co-exist/react-express-app/server
+    working_directory: server
     steps:
       - run:
           name: write directory
@@ -22,14 +22,14 @@ jobs:
             fi
       - run:
           name: Install dependencies
-          command: npm install --no-package-lock
+          command: npm install
       - run:
           name: Start Express server
           command: npm start
   start-client:
     docker:
       - image: cimg/node:14.17.0
-    working_directory: ~/Users/mrm/Documents/TECH/React/Redux/Co-exist/react-express-app/client
+    working_directory: client
     steps:
       - run:
           name: write directory
@@ -43,14 +43,14 @@ jobs:
             fi
       - run:
           name: Install dependencies
-          command: npm install --no-package-lock
+          command: npm install
       - run:
           name: Start React app
           command: npm start
   start-json-server:
     docker:
       - image: cimg/node:14.17.0
-    working_directory: ~/Users/mrm/Documents/TECH/React/Redux/Co-exist/react-express-app/server
+    working_directory: server
     steps:
       - run:
           name: write directory
@@ -64,10 +64,10 @@ jobs:
             fi
       - run:
           name: Install dependencies
-          command: npm install --no-package-lock
+          command: npm install
       - run:
           name: Start JSON server
-          command: json-server --watch data.json
+          command: json-server
   deploy:
     machine:
       enabled: true
