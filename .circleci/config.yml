@@ -4,13 +4,11 @@ jobs:
   start-express:
     docker:
       - image: cimg/node:14.17.0
-    working_directory: server
+    working_directory: /my-dev-branch
     steps:
       - checkout:
-          path: Pacomrm/Co-Exist
-      - run:
-          name: Clone repository
-          command: git clone https://github.com/Pacomrm/Co-Exist/tree/project-add-form
+          path: /my-dev-branch
+          repository: Pacomrm/Co-Exist
       - run:
           name: write directory
           command: pwd
@@ -31,20 +29,21 @@ jobs:
             fi
       - run:
           name: Install dependencies
-          command: npm install
+          command: cd /my-dev-branch/server && npm install
       - run:
           name: Start Express server
-          command: npm start
+          command: cd /my-dev-branch/server && npm start
   start-client:
     docker:
       - image: cimg/node:14.17.0
-    working_directory: client
+    working_directory: /my-dev-branch
     steps:
+      - checkout:
+          path: /my-dev-branch
+          repository: Pacomrm/Co-Exist
       - run:
           name: write directory
           command: pwd
-      - checkout:
-          path: Pacomrm/Co-Exist
       - run:
           name: Workaround old Docker images with incorrect $HOME
           command: |
@@ -53,20 +52,21 @@ jobs:
             fi
       - run:
           name: Install dependencies
-          command: npm install
+          command: cd /my-dev-branch/client && npm install
       - run:
           name: Start React app
-          command: npm start
+          command: cd /my-dev-branch/client && npm start
   start-json-server:
     docker:
       - image: cimg/node:14.17.0
-    working_directory: server
+    working_directory: /my-dev-branch
     steps:
+      - checkout:
+          path: /my-dev-branch
+          repository: Pacomrm/Co-Exist
       - run:
           name: write directory
           command: pwd
-      - checkout:
-          path: Pacomrm/Co-Exist
       - run:
           name: Workaround old Docker images with incorrect $HOME
           command: |
@@ -75,10 +75,10 @@ jobs:
             fi
       - run:
           name: Install dependencies
-          command: npm install
+          command: cd /my-dev-branch/server && npm install
       - run:
           name: Start JSON server
-          command: json-server
+          command: cd /my-dev-branch/server json-server --watch data.json
   deploy:
     machine:
       enabled: true
