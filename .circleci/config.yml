@@ -1,12 +1,39 @@
 version: 2.1
 jobs:
-  my-job:
+  start-express-server:
     docker:
-      - image: my-docker-image
+      - image: node:14
+    working_directory: /my-dev-branch
     environment:
       HOME: /root
+      PORT: 6001
+      NODE_ENV: production
     steps:
-      - checkout
+      - checkout:
+          path: /my-dev-branch
+          repository: Pacomrm/Co-Exist
       - run:
           name: Set HOME environment variable
           command: echo "HOME=${HOME}"
+      - run:
+          name: Install dependencies
+          command: cd /my-dev-branch/server && npm install
+      - run:
+          name: Start server
+          command: cd /my-dev-branch/server && npm start
+          background: true
+      - run:
+          name: Wait for server to start
+          command: |
+            until nc -z localhost $PORT; do
+              echo "Waiting for server to start..."
+              sleep 1
+            done
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - start-express-server:
+          filters:
+            branches:
+              only: project-add-form
