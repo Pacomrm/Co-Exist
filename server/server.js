@@ -1,11 +1,12 @@
+require('dotenv').config()
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const port = process.env.PORT || 6000;
+const port = process.env.EXPRESS_PORT || 6002;
 app.use(bodyParser.json());
 
 app.get('/api/hello', (req, res) => {
-    res.send({ express: 'Hello From Express' });
+    res.send({ express: 'Express running...' });
 });
 app.post('/api/data', (req, res) => {
     console.log(req.body);
